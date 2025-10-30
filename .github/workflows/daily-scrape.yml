@@ -35,6 +35,10 @@ jobs:
           GYM_WORKOUT_URL: ${{ secrets.GYM_WORKOUT_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CAROUSEL_SELECTOR: ${{ secrets.CAROUSEL_SELECTOR }}
+          IMAGE_FILENAME_PATTERN: ${{ secrets.IMAGE_FILENAME_PATTERN }}
+          IMAGE_MATCH_STRATEGY: ${{ secrets.IMAGE_MATCH_STRATEGY || 'both' }}
+          IMAGE_ALT_PATTERN: ${{ secrets.IMAGE_ALT_PATTERN || '{DAY}' }}
           TIMEZONE: America/Los_Angeles
           OCR_ENGINE: tesseract
           DEBUG: false
