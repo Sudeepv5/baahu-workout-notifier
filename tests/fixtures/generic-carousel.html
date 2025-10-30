@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generic Workout Carousel Structure</title>
+</head>
+<body>
+    <h1>Example Workout Page</h1>
+
+    <!--
+        This is a GENERIC example showing the expected HTML structure.
+        Replace CAROUSEL_SELECTOR_VALUE with your actual selector from .env
+        Replace image URLs and patterns to match your actual workout page.
+    -->
+
+    <!-- Newest workout carousel (first on page) -->
+    <div data-widget_type="CAROUSEL_SELECTOR_VALUE">
+        <div class="carousel-wrapper">
+            <div class="carousel-inner">
+
+                <!-- Cover slide (typically skipped) -->
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/1-Cover-2.png" alt="1 Cover">
+                </div>
+
+                <!-- Day slides - follow configured naming pattern -->
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/2-Monday-2.png" alt="2 Monday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/3-Tuesday-2.png" alt="3 Tuesday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/4-Wednesday-2.png" alt="4 Wednesday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/5-Thursday-2.png" alt="5 Thursday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/6-Friday-2.png" alt="6 Friday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/7-Saturday-2.png" alt="7 Saturday">
+                </div>
+
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/10/8-Sunday-2.png" alt="8 Sunday">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Old workout carousel (should be ignored - scraper takes first) -->
+    <div data-widget_type="CAROUSEL_SELECTOR_VALUE">
+        <div class="carousel-wrapper">
+            <div class="carousel-inner">
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/09/1-Cover-1.png" alt="1 Cover">
+                </div>
+                <div class="slide">
+                    <img src="https://example.com/uploads/2025/09/2-Monday-1.png" alt="2 Monday">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

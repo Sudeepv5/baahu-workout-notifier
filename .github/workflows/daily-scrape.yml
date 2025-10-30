@@ -1,0 +1,58 @@
+name: Daily Workout Scraper
+
+on:
+  # Run daily at 2AM UTC (6PM PST previous day)
+  schedule:
+    - cron: '0 2 * * *'
+
+  # Allow manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'Day of week (e.g., Monday, Tuesday) - leave empty for tomorrow'
+        required: false
+        type: string
+
+jobs:
+  scrape-workout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run workout scraper
+        env:
+          GYM_WORKOUT_URL: ${{ secrets.GYM_WORKOUT_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TIMEZONE: America/Los_Angeles
+          OCR_ENGINE: tesseract
+          DEBUG: false
+          PRINT_TEXT: true
+        run: |
+          if [ -n "${{ github.event.inputs.day }}" ]; then
+            echo "Running with manual day: ${{ github.event.inputs.day }}"
+            npm start ${{ github.event.inputs.day }}
+          else
+            echo "Running in automatic mode (tomorrow's workout)"
+            npm start
+          fi
+
+      - name: Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-logs
+          path: |
+            *.log
+          retention-days: 7

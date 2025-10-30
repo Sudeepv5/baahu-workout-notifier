@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Project context (contains real URLs and setup details for Claude)
+CONTEXT.md
+
+# Workout data (images and sensitive info)
+data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+test-*.png
+test-*.jpg
+
+# Tesseract language data (auto-downloaded)
+*.traineddata
+
+# Sensitive test fixtures (actual gym HTML)
+tests/fixtures/workoutDiv.html
+tests/fixtures/mock-workout-page.html
+tests/fixtures/*.local.html
+
+# Temp files
+tmp/
+temp/
+*.tmp
