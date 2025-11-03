@@ -1,9 +1,9 @@
 name: Daily Workout Scraper
 
 on:
-  # Run daily at 2AM UTC (6PM PST previous day)
+  # Run daily at 1PM UTC (5AM PST / 6AM PDT)
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 13 * * *'
 
   # Allow manual trigger for testing
   workflow_dispatch:

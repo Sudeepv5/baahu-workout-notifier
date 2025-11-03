@@ -3,17 +3,16 @@ const { config } = require('../config/config');
 const axios = require('axios');
 
 /**
- * Get tomorrow's day name (since we scrape at 6PM for next day)
+ * Get today's day name
  * @returns {string} Day name (e.g., "Monday")
  */
-function getTomorrowDayName() {
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+function getDayofWeek() {
+  const today = new Date();
 
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const dayName = days[tomorrow.getDay()];
+  const dayName = days[today.getDay()];
 
-  console.log(`📅 Target day: ${dayName} (${tomorrow.toLocaleDateString()})`);
+  console.log(`📅 Target day: ${dayName} (${today.toLocaleDateString()})`);
   return dayName;
 }
 
@@ -27,7 +26,7 @@ async function scrapeWorkoutImage(targetDay = null) {
 
   try {
     // Determine which day to scrape
-    const dayName = targetDay || getTomorrowDayName();
+    const dayName = targetDay || getDayofWeek();
 
     if (targetDay) {
       console.log(`📅 Target day (manual): ${dayName}`);
